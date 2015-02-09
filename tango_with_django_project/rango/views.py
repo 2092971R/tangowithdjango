@@ -19,7 +19,7 @@ def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     mostviews_list = Category.objects.order_by('-views')[:5]
     context_dict = {'categories': category_list, 'viewed': mostviews_list}
-
+    
     # Render the response and send it back!
     return render(request, 'rango/index.html', context_dict)
 
@@ -55,7 +55,6 @@ def category(request, category_name_slug):
         # Don't do anything - the template displays the "no category" message for us.
         pass
 
-    # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
 
 @login_required
@@ -217,7 +216,7 @@ def user_logout(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html', {})
 
 
 

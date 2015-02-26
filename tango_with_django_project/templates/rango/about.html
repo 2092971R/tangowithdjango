@@ -7,9 +7,16 @@
 {% block title %}About{% endblock %}
 
 {% block body_block %}
-	<h1>Rango says this is the about page</h1> <br>
-	This tutorial was created by Alexandra Russell, 2092971R <br>
-	<img src="{% static "images/me.jpg" %}" alt="Picture of Alexandra Russell" /> <br>
-	You have visited this site {{visits}} times <br>
-
+    <div class="page-header">
+                <h1>About <small> Rango says this is the About Page</small></h1>
+            </div>
+            <div>
+            <p></strong>.</p>
+			<br>
+			This tutorial was created by Alexandra Russell, 2092971R <br>
+			You have visited this site {{visits}} time(s) <br>
+			Here's a picture of Rango! <br>
+			<br>
+            <img  width="500" height="444" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
+            </div>
 {% endblock %}

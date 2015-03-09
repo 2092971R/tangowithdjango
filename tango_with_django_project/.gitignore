@@ -55,3 +55,6 @@ target/
 
 # database
 *.sqlite3
+
+#Keys
+/rango/keys.py

@@ -1,6 +1,9 @@
 import json
 import urllib, urllib2
 from keys import BING_API_KEY
+#from keyspointtwo import BING_API_KEY
+#activate the above line and comment out the one above that if you have
+#the keyspointtwo file containing the functioning API
 
 if __name__ == '__main__':
     main()

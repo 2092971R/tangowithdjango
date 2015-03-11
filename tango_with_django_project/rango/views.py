@@ -12,8 +12,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from rango.bing_search import run_query
 from django.shortcuts import redirect
-from models import UserProfile
-from django.contrib.auth.models import User
+
 
 def index(request):
     # Query the database for a list of ALL categories currently stored.
@@ -71,14 +70,17 @@ def category(request, category_name_slug):
     context_dict['result_list'] = None
     context_dict['query'] = None
     if request.method == 'POST':
-        query = request.POST['query'].strip()
+        try:
+            query = request.POST['query'].strip()
 
-        if query:
-            # Run our Bing function to get the results list!
-            result_list = run_query(query)
+            if query:
+                # Run our Bing function to get the results list!
+                result_list = run_query(query)
 
-            context_dict['result_list'] = result_list
-            context_dict['query'] = query
+                context_dict['result_list'] = result_list
+                context_dict['query'] = query
+        except:
+            pass
 
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -162,7 +164,7 @@ def add_page(request, category_name_slug):
             print form.errors
     else:
         form = PageForm()
-    context_dict = {'form':form, 'category': cat}
+    context_dict = {'form':form, 'category': cat, 'category_name_slug': category_name_slug}
     return render(request, 'rango/add_page.html', context_dict)
 
 
